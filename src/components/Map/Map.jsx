@@ -1,22 +1,35 @@
-import { useState } from 'react'
-import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import { useState, useEffect } from 'react'
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import ProducerCard from '../ProducerCard/ProducerCard'
 import Filters from '../Filters/Filters'
 import './Map.css'
-
+import { ZoomControl } from 'react-leaflet'
 // Funkcija koja vraća boju po proizvodu
 function getMarkerColor(product) {
   switch (product) {
     case 'Malina':
-      return 'red'
+      return '#e74c3c'
     case 'Med':
-      return 'yellow'
+      return '#f1c40f'
     case 'Krompir':
-      return 'brown'
+      return '#8b4513'
+    case 'Voće':
+      return '#e67e22'
+    case 'Povrće':
+      return '#27ae60'
     default:
-      return 'blue'
+      return '#3498db'
   }
+}
+
+// Komponenta koja osvežava mapu nakon rendera (bitno za mobilne)
+function MapResizeFix() {
+  const map = useMap()
+  useEffect(() => {
+    setTimeout(() => map.invalidateSize(), 100)
+  }, [map])
+  return null
 }
 
 export default function Map({ producers, removeProducer }) {
@@ -31,48 +44,56 @@ export default function Map({ producers, removeProducer }) {
 
   return (
     <div className="map-wrapper">
-      <Filters filters={filters} setFilters={setFilters} />
+      <div className="filters-wrapper">
+        <Filters filters={filters} setFilters={setFilters} />
+      </div>
 
       <MapContainer
-        center={[44.0165, 21.0059]}
-        zoom={7}
-        style={{ height: '100%', width: '100%' }}
-      >
-        <TileLayer
-          attribution="&copy; OpenStreetMap"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+  center={[44.0165, 21.0059]}
+  zoom={7}
+  style={{ height: '100%', width: '100%' }}
+  zoomControl={false} // isključuje default dugmad
+>
+  <TileLayer
+    attribution="&copy; OpenStreetMap"
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
 
-        {filteredProducers.map((p) => {
-          const icon = L.divIcon({
-            html: `<i style="background:${getMarkerColor(
-              p.product
-            )};border-radius:50%;display:block;width:16px;height:16px;"></i>`,
-            className: '',
-            iconSize: [16, 16],
-          })
+  {filteredProducers.map((p) => {
+    const icon = L.divIcon({
+      html: `<span class="pulse-marker" style="background:${getMarkerColor(
+        p.product
+      )}"></span>`,
+      className: '',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10],
+    })
 
-          return (
-            <Marker
-              key={p.id}
-              position={[p.lat, p.lng]}
-              icon={icon}
-              eventHandlers={{
-                click: () => setSelectedProducer(p),
-              }}
-            />
-          )
-        })}
-      </MapContainer>
-
-      <ProducerCard
-        producer={selectedProducer}
-        onClose={() => setSelectedProducer(null)}
-        onRemove={() => {
-          removeProducer(selectedProducer.id)
-          setSelectedProducer(null)
+    return (
+      <Marker
+        key={p.id}
+        position={[p.lat, p.lng]}
+        icon={icon}
+        eventHandlers={{
+          click: () => setSelectedProducer(p),
         }}
       />
+    )
+  })}
+
+  <MapResizeFix />
+</MapContainer>
+
+      {selectedProducer && (
+        <ProducerCard
+          producer={selectedProducer}
+          onClose={() => setSelectedProducer(null)}
+          onRemove={() => {
+            removeProducer(selectedProducer.id)
+            setSelectedProducer(null)
+          }}
+        />
+      )}
     </div>
   )
 }

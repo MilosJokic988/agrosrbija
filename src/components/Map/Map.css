@@ -1,4 +1,77 @@
+/* Fullscreen setup */
+html, body, #root, .App {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Map wrapper */
 .map-wrapper {
-  width: 100%;
-  height: calc(100vh - 120px); /* header + footer */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}
+
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Filters overlay */
+.filters-wrapper {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Producer card overlay */
+.producer-card {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 350px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Pulse marker */
+.pulse-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 0.3; }
+  100% { transform: scale(0.8); opacity: 0.7; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .filters-wrapper { padding: 10px; }
+  .producer-card { width: 95%; padding: 12px; }
+}
+
+@media (max-width: 480px) {
+  .filters-wrapper { padding: 8px; font-size: 0.9rem; }
+  .producer-card { width: 95%; font-size: 0.9rem; padding: 10px; }
 }
