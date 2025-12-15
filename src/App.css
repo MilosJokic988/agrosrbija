@@ -1,0 +1,32 @@
+/* Reset + osnova */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: system-ui, sans-serif;
+}
+
+/* Layout */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glavni sadržaj raste između headera i footera */
+.content {
+  flex: 1;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Link reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}

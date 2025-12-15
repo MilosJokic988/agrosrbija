@@ -1,0 +1,41 @@
+/* About.css */
+
+.about {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+  line-height: 1.8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #fdfdfd; /* svetla pozadina */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.about h1 {
+  font-size: 2.4rem;
+  margin-bottom: 24px;
+  color: #1f7a4d;
+  text-align: center;
+}
+
+.about p {
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.about ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.signature {
+  display: block;
+  margin-top: 40px;
+  font-style: italic;
+  font-size: 1rem;
+  color: #666;
+  text-align: right;
+}

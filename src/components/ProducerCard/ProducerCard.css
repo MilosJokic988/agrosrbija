@@ -1,0 +1,26 @@
+.producer-card {
+  position: absolute;
+  top: 80px;
+  right: 24px;
+  width: 300px;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.badge {
+  margin-left: 6px;
+  color: green;
+}
