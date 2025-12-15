@@ -1,33 +1,16 @@
-# AgroMapa Srbije
+# React + Vite
 
-AgroMapa Srbije je interaktivna React aplikacija koja omogućava korisnicima da dodaju i pronađu lokalne proizvođače hrane širom Srbije na mapi. Cilj projekta je olakšati pronalaženje svežih i domaćih proizvoda direktno od proizvođača.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## Funkcionalnosti
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- Prikaz proizvođača na mapi sa LeafletJS
-- Dodavanje novih proizvođača putem forme
-- Pretraga i filtriranje proizvođača po proizvodu i maksimalnoj ceni
-- Pregled detalja proizvođača klikom na marker na mapi
-- Responzivni dizajn sa hamburger menijem za mobilne uređaje
-- Podaci se čuvaju u lokalnom kontekstu aplikacije (može se proširiti na backend)
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Tehnologije
+## Expanding the ESLint configuration
 
-- React (Vite)
-- React Router DOM
-- React Leaflet
-- UUID (generisanje jedinstvenih ID-jeva)
-- CSS (svoj stil bez Tailwind-a)
-- OpenStreetMap Nominatim API za geokodiranje lokacija
-
----
-
-## Instalacija
-
-1. Klonirajte repozitorij:
-```bash
-git clone https://github.com/korisnicko-ime/agromapa-srbije.git
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
