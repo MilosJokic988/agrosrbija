@@ -1,108 +1,102 @@
-/* === AddProducer Container === */
+/* === Container === */
 .add-producer {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 0 16px;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 0 12px;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add-producer h1 {
-  font-size: 2.4rem;
-  margin-bottom: 12px;
-  color: #1f7a4d;
+  font-size: 2rem;
   text-align: center;
+  color: #1f7a4d;
+  margin-bottom: 8px;
   font-weight: 700;
 }
 
 .subtitle {
-  margin-bottom: 24px;
-  color: #555;
   text-align: center;
   font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
 }
 
 /* === Form Card === */
 form {
-  background: #ffffff;
-  padding: 32px 24px;
-  border-radius: 14px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-form:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  padding: 24px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* === Form Group === */
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
 }
 
 label {
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: #333;
   font-size: 0.95rem;
 }
 
 input,
 select {
-  padding: 10px 12px; /* smanjeno sa 14px+16px */
-  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 0.95rem; /* smanjeno sa 1rem */
   transition: border 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none; /* za select da ukloni plavu boju na mobilnom */
+  background-color: #fff;
+  color: #333;
 }
 
 input:focus,
 select:focus {
   border-color: #1f7a4d;
-  box-shadow: 0 0 0 3px rgba(31, 122, 77, 0.2);
+  box-shadow: 0 0 0 3px rgba(31,122,77,0.15);
   outline: none;
 }
 
 /* === Location Button === */
 button[type="button"] {
-  margin-top: 6px;
-  margin-bottom: 16px;
-  padding: 12px 0;
-  width: 100%;
-  background: #ffd700;
+  background-color: #ffd700;
   color: #1f7a4d;
   font-weight: 600;
+  padding: 10px 0;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition: background 0.2s ease;
 }
 
 button[type="button"]:hover {
-  background: #e6c200;
-  transform: translateY(-1px);
+  background-color: #e6c200;
 }
 
 /* === Submit Button === */
 button[type="submit"] {
-  margin-top: 16px;
-  padding: 16px 0;
-  width: 100%;
-  background: #1f7a4d;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  background-color: #1f7a4d;
+  color: #fff;
   font-weight: 600;
+  padding: 12px 0;
+  border-radius: 6px;
+  border: none;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  font-size: 1rem;
+  transition: background 0.2s ease;
 }
 
 button[type="submit"]:hover:not(:disabled) {
-  background: #155d3b;
-  transform: translateY(-1px);
+  background-color: #155d3b;
 }
 
 button[type="submit"]:disabled {
@@ -110,44 +104,47 @@ button[type="submit"]:disabled {
   cursor: not-allowed;
 }
 
-/* === Success Location Text === */
+/* === Success Text === */
 p {
   font-size: 0.9rem;
   color: green;
-  margin-bottom: 12px;
+  margin-top: -4px;
+  margin-bottom: 8px;
 }
 
 /* === Responsive === */
 @media (max-width: 768px) {
-  form {
-    padding: 28px 16px;
+  .add-producer h1 {
+    font-size: 1.8rem;
   }
 
   input,
-  select {
-    font-size: 0.9rem; /* dodatno smanjeno za mobilne */
+  select,
+  button[type="submit"],
+  button[type="button"] {
+    font-size: 0.95rem;
     padding: 8px 10px;
   }
 
-  button[type="submit"],
-  button[type="button"] {
-    font-size: 1rem;
-    padding: 14px 0;
+  form {
+    padding: 20px 16px;
   }
 }
 
 @media (max-width: 480px) {
   .add-producer h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
+  }
+
+  input,
+  select,
+  button[type="submit"],
+  button[type="button"] {
+    font-size: 0.9rem;
+    padding: 6px 8px;
   }
 
   form {
-    padding: 24px 12px;
-  }
-
-   input,
-  select {
-    padding: 6px 8px; /* još manja visina za male ekrane */
-    font-size: 0.85rem;
+    padding: 16px 12px;
   }
 }
